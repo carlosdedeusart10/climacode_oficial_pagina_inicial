@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CLIMACODE_OFICIAL | Seu Clima</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      width: 100%;
+      max-width: 900px;
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      text-align: center;
+      backdrop-filter: blur(6px);
+    }
+    h1 {
+      font-size: 2.2rem;
+      color: #60a5fa;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    h2 {
+      font-size: 1rem;
+      color: #93c5fd;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    img {
+      display: block;
+      margin: 0 auto 20px auto;
+      width: 180px;
+      border-radius: 12px;
+    }
+    .card {
+      background: rgba(30, 41, 59, 0.6);
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 20px;
+      box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.05);
+    }
+    h3 {
+      color: #60a5fa;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    p {
+      line-height: 1.5;
+      font-size: 0.95rem;
+      color: #e2e8f0;
+    }
+    .chip-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .chip {
+      background: #1e3a8a;
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(90deg, #3b82f6, #2563eb);
+      border: none;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      margin-top: 15px;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+    }
+    footer {
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #93c5fd;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script>
+    // Função auxiliar para criar elementos
+    function createEl(tag, props = {}, children = []) {
+      const el = document.createElement(tag);
+      Object.entries(props).forEach(([key, value]) => {
+        if (key === "class") el.className = value;
+        else if (key === "text") el.textContent = value;
+        else if (key === "html") el.innerHTML = value;
+        else el.setAttribute(key, value);
+      });
+      children.forEach(child => el.appendChild(child));
+      return el;
+    }
+
+    // Container principal
+    const app = document.getElementById("app");
+    const container = createEl("div", { class: "container" });
+
+    // Cabeçalho
+    const title = createEl("h1", { text: "CLIMACODE_OFICIAL" });
+    const subtitle = createEl("h2", { text: "PREPARE-SE PARA VER MEDIDAS" });
+    const logo = createEl("img", {
+      src: "https://i.postimg.cc/Jhj3w0GD/Sem-titulo.jpg",
+      alt: "Logo do Projeto Climacode"
+    });
+    container.append(title, subtitle, logo);
+
+    // Seção SOBRE
+    const sobreCard = createEl("div", { class: "card" }, [
+      createEl("h3", { text: "SOBRE O PROJETO" }),
+      createEl("p", {
+        text: "Diante da intensificação das temperaturas e da irregularidade pluviométrica na Região Metropolitana de Salvador, e considerando que as estações oficiais não registram as variações microclimáticas influenciadas por fatores locais (vegetação, relevo, corpos d'água e urbanização) em Simões Filho, este projeto visa suprir a lacuna de dados. Será desenvolvida e implementada uma miniestação meteorológica automatizada baseada em Arduino/ESP32 para monitorar em tempo real as variáveis ambientais no IFBA Campus Simões Filho e na APA Joanes Ipitanga. O objetivo central é compreender e monitorar as variações climáticas locais, fortalecendo a educação ambiental e o monitoramento dos impactos das mudanças climáticas regionais."
+      })
+    ]);
+    container.appendChild(sobreCard);
+
+    // Seção COMPONENTES
+    const compCard = createEl("div", { class: "card" }, [
+      createEl("h3", { text: "COMPONENTES & METODOLOGIA" })
+    ]);
+    const chips = ["ESP32 / Arduino", "Sensores: DHT22, BMP280, pluviômetro", "Transmissão: Wi-Fi", "Visualização: ThingSpeak"];
+    const chipContainer = createEl("div", { class: "chip-container" });
+    chips.forEach(text => chipContainer.appendChild(createEl("div", { class: "chip", text })));
+    compCard.appendChild(chipContainer);
+    container.appendChild(compCard);
+
+    // Seção ACESSO
+    const acessoCard = createEl("div", { class: "card" }, [
+      createEl("h3", { text: "ACESSO A DADOS" }),
+      createEl("p", {
+        text: "Clique no botão abaixo para acessar o canal de visualização dos dados coletados em tempo real. O botão foi configurado para abrir o site de visualização em nova aba sem exibir a URL diretamente na interface do usuário."
+      })
+    ]);
+    const btn = createEl("button", { class: "btn", text: "VER CLIMA" });
+    btn.addEventListener("click", () => {
+      window.open("https://carlosdedeusart10.github.io/Climacode_oficial_seu-clima/" , "_blank", "noopener,noreferrer");
+    });
+    acessoCard.appendChild(btn);
+    container.appendChild(acessoCard);
+
+    // Seção CONTATO
+    const contatoCard = createEl("div", { class: "card" }, [
+      createEl("h3", { text: "CONTATO & PARCERIAS" }),
+      createEl("p", {
+        text: "IFBA Campus Simões Filho · APA Joanes Ipitanga · Comunidade local · Projetos de extensão e pesquisa. Para parcerias, registre interesse no e-mail institucional do IFBA (inserir e-mail quando disponível)."
+      })
+    ]);
+    container.appendChild(contatoCard);
+
+    const footer = createEl("footer", { html: "<p>MAIS INFORMAÇÕES EM BREVE</p>" });
+    container.appendChild(footer);
+  
+    app.appendChild(container);
+  </script>
+</body>
+</html>
