@@ -5,11 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CLIMACODE_OFICIAL | Seu Clima</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: "Segoe UI", Roboto, Arial, sans-serif;
       background: radial-gradient(circle at top, #0f172a, #020617);
@@ -21,173 +17,51 @@
       padding: 20px;
       transition: 0.4s;
     }
-    .container {
-      width: 100%;
-      max-width: 900px;
-      background: rgba(15, 23, 42, 0.8);
-      border-radius: 16px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-      padding: 30px;
-      text-align: center;
-      backdrop-filter: blur(6px);
-    }
-    h1 {
-      font-size: 2.2rem;
-      color: #60a5fa;
-      margin-bottom: 6px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    h2 {
-      font-size: 1rem;
-      color: #93c5fd;
-      font-weight: 500;
-      margin-bottom: 16px;
-    }
-    img {
-      display: block;
-      margin: 0 auto 20px auto;
-      width: 180px;
-      border-radius: 12px;
-    }
-    .card {
-      background: rgba(30, 41, 59, 0.6);
-      border-radius: 12px;
-      padding: 16px;
-      margin-top: 20px;
-      box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.05);
-    }
-    h3 {
-      color: #60a5fa;
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    p {
-      line-height: 1.5;
-      font-size: 0.95rem;
-      color: #e2e8f0;
-    }
-    .chip-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 10px;
-    }
-    .chip {
-      background: #1e3a8a;
-      color: #fff;
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: linear-gradient(90deg, #3b82f6, #2563eb);
-      border: none;
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-weight: 700;
-      margin-top: 15px;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
-    }
-    footer {
-      margin-top: 30px;
-      font-size: 0.9rem;
-      color: #93c5fd;
-      text-align: center;
-    }
-    footer a {
-      color: #60a5fa;
-      text-decoration: none;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Login */
+    .hidden { display: none; }
     .login-container {
-      width: 90%;
-      max-width: 400px;
-      background: rgba(15, 23, 42, 0.8);
+      width: 90%; max-width: 400px;
+      background: rgba(15,23,42,0.85);
       border-radius: 12px;
       padding: 20px;
+      text-align: center;
       box-shadow: 0 0 20px rgba(0,0,0,0.4);
     }
-    .hidden { display: none; }
     input {
-      width: 100%;
-      padding: 10px;
-      margin: 6px 0;
-      border-radius: 8px;
-      border: none;
-      outline: none;
-      background: #1e293b;
-      color: white;
+      width: 100%; padding: 10px; margin: 6px 0;
+      border-radius: 8px; border: none; outline: none;
+      background: #1e293b; color: white;
     }
     button {
-      width: 100%;
-      padding: 10px;
-      background-color: #3b82f6;
-      border: none;
-      border-radius: 8px;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      margin-top: 10px;
+      width: 100%; padding: 10px;
+      background-color: #3b82f6; border: none;
+      border-radius: 8px; color: white; font-size: 1rem;
+      cursor: pointer; margin-top: 10px;
     }
     button:hover { background-color: #2563eb; }
-    .toggle {
-      text-align: center;
-      margin-top: 10px;
-      cursor: pointer;
-      color: #93c5fd;
-    }
-
-    /* Novo estilo para o botão de sair */
+    .toggle { margin-top: 10px; cursor: pointer; color: #93c5fd; }
     #logoutBtn {
-      display: none;
-      background: #ef4444;
-      padding: 10px 24px;
-      border-radius: 999px;
-      border: none;
-      color: white;
-      cursor: pointer;
-      font-weight: 700;
-      margin: 30px auto 0 auto;
-      display: block;
-      width: fit-content;
+      background: #ef4444; padding: 10px 24px;
+      border-radius: 999px; border: none; color: white;
+      cursor: pointer; font-weight: 700; margin: 30px auto 0 auto;
+      display: block; width: fit-content;
     }
-    #logoutBtn:hover {
-      background: #dc2626;
-      transform: scale(1.05);
-    }
+    #logoutBtn:hover { background: #dc2626; transform: scale(1.05); }
   </style>
 </head>
 <body>
-  <!-- Login -->
+
+  <!-- LOGIN -->
   <div id="loginPage" class="login-container">
-    <h2 style="text-align:center; color:#60a5fa;">Login</h2>
-    <input type="text" id="loginUser" placeholder="Usuário ou e-mail" />
+    <h2 style="color:#60a5fa;">Login</h2>
+    <input type="email" id="loginEmail" placeholder="E-mail" />
     <input type="password" id="loginPass" placeholder="Senha" />
     <button onclick="login()">Entrar</button>
     <p class="toggle" onclick="showRegister()">Criar conta</p>
   </div>
 
-  <!-- Registro -->
+  <!-- REGISTRO -->
   <div id="registerPage" class="login-container hidden">
-    <h2 style="text-align:center; color:#60a5fa;">Criar conta</h2>
+    <h2 style="color:#60a5fa;">Criar conta</h2>
     <input type="text" id="regUser" placeholder="Nome de usuário" />
     <input type="email" id="regEmail" placeholder="E-mail" />
     <input type="password" id="regPass" placeholder="Senha" />
@@ -195,32 +69,48 @@
     <p class="toggle" onclick="showLogin()">Já tenho conta</p>
   </div>
 
-  <!-- Tela principal do Climacode -->
+  <!-- CONTEÚDO PRINCIPAL -->
   <div id="mainContent" class="hidden">
     <div id="app"></div>
     <button id="logoutBtn">Sair</button>
   </div>
 
-  <script>
+  <!-- Firebase e Lógica -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } 
+      from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+    import { getFirestore, setDoc, doc } 
+      from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+    import { getAnalytics } 
+      from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+
+    // === SUA CONFIGURAÇÃO DO FIREBASE ===
+    const firebaseConfig = {
+      apiKey: "AIzaSyDUUbwQj2E9ugrIPrp88yiBC-h76nk2_8c",
+      authDomain: "clima-743d0.firebaseapp.com",
+      projectId: "clima-743d0",
+      storageBucket: "clima-743d0.firebasestorage.app",
+      messagingSenderId: "700610995947",
+      appId: "1:700610995947:web:b644ddaacde92e40ce80ae",
+      measurementId: "G-J56Y32XTCD"
+    };
+
+    // Inicializa Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
     const loginPage = document.getElementById("loginPage");
     const registerPage = document.getElementById("registerPage");
     const mainContent = document.getElementById("mainContent");
     const logoutBtn = document.getElementById("logoutBtn");
 
-    window.onload = () => {
-      const loggedUser = localStorage.getItem("loggedUser");
-      if (loggedUser) {
-        showMain();
-      } else {
-        showLogin();
-      }
-    };
-
     function showLogin() {
       loginPage.classList.remove("hidden");
       registerPage.classList.add("hidden");
       mainContent.classList.add("hidden");
-      logoutBtn.style.display = "none";
     }
 
     function showRegister() {
@@ -228,135 +118,63 @@
       registerPage.classList.remove("hidden");
     }
 
-    function showMain() {
-      loginPage.classList.add("hidden");
-      registerPage.classList.add("hidden");
-      mainContent.classList.remove("hidden");
-      logoutBtn.style.display = "block";
-      loadClimacodePage();
-    }
-
-    function register() {
+    async function register() {
       const user = document.getElementById("regUser").value.trim();
       const email = document.getElementById("regEmail").value.trim();
       const pass = document.getElementById("regPass").value;
 
-      if (!user || !email || !pass) {
-        alert("Preencha todos os campos!");
-        return;
-      }
+      if (!user || !email || !pass) return alert("Preencha todos os campos!");
 
-      let users = JSON.parse(localStorage.getItem("users")) || [];
-      if (users.find(u => u.user === user || u.email === email)) {
-        alert("Usuário ou e-mail já cadastrados!");
-        return;
-      }
-
-      users.push({ user, email, pass });
-      localStorage.setItem("users", JSON.stringify(users));
-      alert("Cadastro realizado com sucesso!");
-      showLogin();
-    }
-
-    function login() {
-      const userInput = document.getElementById("loginUser").value.trim();
-      const pass = document.getElementById("loginPass").value;
-      let users = JSON.parse(localStorage.getItem("users")) || [];
-
-      const found = users.find(u => 
-        (u.user === userInput || u.email === userInput) && u.pass === pass
-      );
-
-      if (found) {
-        localStorage.setItem("loggedUser", found.user);
-        showMain();
-      } else {
-        alert("Usuário ou senha incorretos!");
-      }
-    }
-
-    logoutBtn.onclick = () => {
-      localStorage.removeItem("loggedUser");
-      document.getElementById("app").innerHTML = "";
-      showLogin();
-    };
-
-    // Função que carrega a tela antiga
-    function loadClimacodePage() {
-      const app = document.getElementById("app");
-      app.innerHTML = ""; // limpa caso já exista
-
-      function createEl(tag, props = {}, children = []) {
-        const el = document.createElement(tag);
-        Object.entries(props).forEach(([key, value]) => {
-          if (key === "class") el.className = value;
-          else if (key === "text") el.textContent = value;
-          else if (key === "html") el.innerHTML = value;
-          else el.setAttribute(key, value);
+      try {
+        const cred = await createUserWithEmailAndPassword(auth, email, pass);
+        await setDoc(doc(db, "users", cred.user.uid), {
+          username: user,
+          email: email,
+          createdAt: new Date().toISOString()
         });
-        children.forEach(child => el.appendChild(child));
-        return el;
+        alert("Cadastro realizado com sucesso!");
+        showLogin();
+      } catch (e) {
+        alert("Erro ao registrar: " + e.message);
       }
+    }
 
-      const container = createEl("div", { class: "container" });
-      const title = createEl("h1", { text: "CLIMACODE_OFICIAL" });
-      const subtitle = createEl("h2", { text: "PREPARE-SE PARA VER MEDIDAS" });
-      const logo = createEl("img", {
-        src: "https://i.postimg.cc/Jhj3w0GD/Sem-titulo.jpg",
-        alt: "Logo do Projeto Climacode"
-      });
-      container.append(title, subtitle, logo);
+    async function login() {
+      const email = document.getElementById("loginEmail").value.trim();
+      const pass = document.getElementById("loginPass").value;
+      try {
+        await signInWithEmailAndPassword(auth, email, pass);
+      } catch (e) {
+        alert("Erro ao fazer login: " + e.message);
+      }
+    }
 
-      const sobreCard = createEl("div", { class: "card" }, [
-        createEl("h3", { text: "SOBRE O PROJETO" }),
-        createEl("p", {
-          text: "Diante da intensificação das temperaturas e da irregularidade pluviométrica na Região Metropolitana de Salvador, e considerando que as estações oficiais não registram as variações microclimáticas influenciadas por fatores locais (vegetação, relevo, corpos d'água e urbanização) em Simões Filho, este projeto visa suprir a lacuna de dados. Está em desenvolvimento e implementaçao uma miniestação meteorológica automatizada baseada em Arduino/ESP32 para monitorar em tempo real as variáveis ambientais no IFBA Campus Simões Filho e na APA Joanes Ipitanga. O objetivo central é compreender e monitorar as variações climáticas locais, fortalecendo a educação ambiental e o monitoramento dos impactos das mudanças climáticas regionais."
-        })
-      ]);
-      container.appendChild(sobreCard);
+    logoutBtn.onclick = () => signOut(auth);
 
-      const compCard = createEl("div", { class: "card" }, [
-        createEl("h3", { text: "COMPONENTES & METODOLOGIA" })
-      ]);
-      const chips = ["ESP32 / Arduino", "Sensores: DHT22, BMP280, pluviômetro", "Transmissão: Wi-Fi", "Visualização: ThingSpeak"];
-      const chipContainer = createEl("div", { class: "chip-container" });
-      chips.forEach(text => chipContainer.appendChild(createEl("div", { class: "chip", text })));
-      compCard.appendChild(chipContainer);
-      container.appendChild(compCard);
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        showMain(user);
+      } else {
+        showLogin();
+      }
+    });
 
-      const acessoCard = createEl("div", { class: "card" }, [
-        createEl("h3", { text: "ACESSO A DADOS" }),
-        createEl("p", {
-          text: "Clique no botão abaixo para acessar o canal de visualização dos dados coletados em tempo real. O botão foi configurado para abrir o site de visualização em nova aba."
-        })
-      ]);
-      const btn = createEl("button", { class: "btn", text: "COMEÇAR A VER O CLIMA EM TEMPO REAL / APÓS CLICAR VOCÊ DEVE AGUARDAR ALGUNS SEGUNDOS PARA ABRIR" });
-      btn.addEventListener("click", () => {
-        window.open("https://carlosdedeusart10.github.io/Climacode_oficial_seu-clima/", "_blank", "noopener,noreferrer");
-      });
-      acessoCard.appendChild(btn);
-      container.appendChild(acessoCard);
-
-      const contatoCard = createEl("div", { class: "card" }, [
-        createEl("h3", { text: "CONTATO & PARCERIAS" }),
-        createEl("p", {
-          text: "IFBA Campus Simões Filho · APA Joanes Ipitanga · Comunidade local · Projetos de extensão e pesquisa."
-        })
-      ]);
-      container.appendChild(contatoCard);
-
-      const footer = createEl("footer", { 
-        html: `
-          <p>&copy; 2025 Projeto CLIMACODE | Instituto Federal da Bahia</p>
-          <p>Desenvolvido por 
-            <a href="https://www.instagram.com/carlosdedeus_art_1.0" target="_blank">
-              @carlosdedeus_art_1.0
-            </a>
-          </p>
-        `
-      });
-      container.appendChild(footer);
-      app.appendChild(container);
+    function showMain(user) {
+      loginPage.classList.add("hidden");
+      registerPage.classList.add("hidden");
+      mainContent.classList.remove("hidden");
+      const appDiv = document.getElementById("app");
+      appDiv.innerHTML = `
+        <div style="text-align:center;max-width:900px;margin:auto;">
+          <h1 style="color:#60a5fa;">CLIMACODE_OFICIAL</h1>
+          <h2 style="color:#93c5fd;">PREPARE-SE PARA VER MEDIDAS</h2>
+          <img src="https://i.postimg.cc/Jhj3w0GD/Sem-titulo.jpg" alt="Logo" width="180" style="border-radius:12px;margin:20px auto;display:block;">
+          <p style="color:#e2e8f0;">Bem-vindo, <b>${user.email}</b>!</p>
+          <button class="btn" style="margin-top:20px;" onclick="window.open('https://carlosdedeusart10.github.io/Climacode_oficial_seu-clima/', '_blank')">
+            Ver Clima em Tempo Real
+          </button>
+        </div>
+      `;
     }
   </script>
 </body>
