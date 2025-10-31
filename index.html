@@ -46,6 +46,84 @@
     }
     #logoutBtn:hover { background: #dc2626; transform: scale(1.05); }
   </style>
+
+  <!-- ======== Adições: Tema Automático + Centralização ======== -->
+  <style>
+    /* Centralização melhorada */
+    #app {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    #app img {
+      margin-top: 20px;
+      width: 200px;
+      border-radius: 12px;
+    }
+
+    #app h1 {
+      font-size: 2rem;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    #app h2 {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    /* Botões e layout central */
+    #app button {
+      width: 80%;
+      max-width: 300px;
+      margin: 10px 0;
+      border-radius: 999px;
+      font-weight: bold;
+    }
+
+    /* Tema automático */
+    :root {
+      --bg: #f9fafb;
+      --text-primary: #1e3a8a;
+      --text-secondary: #334155;
+      --card-bg: #ffffff;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: radial-gradient(circle at top, #0f172a, #020617);
+        --text-primary: #60a5fa;
+        --text-secondary: #93c5fd;
+        --card-bg: rgba(15, 23, 42, 0.8);
+      }
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      transition: background 0.4s, color 0.4s;
+    }
+
+    .container {
+      background: var(--card-bg);
+      transition: background 0.4s;
+    }
+  </style>
+
+  <script>
+    // Detecta mudança no tema do sistema em tempo real
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      document.body.style.background = e.matches
+        ? 'radial-gradient(circle at top, #0f172a, #020617)'
+        : '#f9fafb';
+    });
+  </script>
+  <!-- ======== Fim das adições ======== -->
+
 </head>
 <body>
 
@@ -177,9 +255,9 @@
 
       const appDiv = document.getElementById("app");
       appDiv.innerHTML = `
-        <h1 style="color:#60a5fa;">CLIMACODE_OFICIAL</h1>
-        <h3 style="color:#93c5fd;">Bem-vindo, ${data.username || user.email}</h3>
-        <img src="https://i.postimg.cc/Jhj3w0GD/Sem-titulo.jpg" width="180" style="border-radius:12px;margin:20px;">
+        <h1>CLIMACODE_OFICIAL</h1>
+        <h2>Bem-vindo, ${data.username || user.email}</h2>
+        <img src="https://i.postimg.cc/Jhj3w0GD/Sem-titulo.jpg" />
         <button onclick="window.open('https://carlosdedeusart10.github.io/Climacode_oficial_seu-clima/', '_blank')">
           Ver Clima em Tempo Real
         </button>
